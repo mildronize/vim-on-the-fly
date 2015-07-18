@@ -1,0 +1,6 @@
+# target_path: /etc/apt/sources.list
+
+deb http://ftp.th.debian.org/debian/ testing main contrib
+deb-src http://ftp.th.debian.org/debian/ testing main contrib
+
+# deb http://security.debian.org/ testing main contrib
