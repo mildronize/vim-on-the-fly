@@ -65,7 +65,7 @@ Can't  run terminal docker directly via `docker run -it vim-on-the-fly` use belo
 
 ## Clean up
 ```
-$ docker stop run-vimotf
-$ docker rm run-vimotf
-$ docker rmi vim-on-the-fly
+PS C:\> docker stop run-vimotf
+PS C:\> docker rm run-vimotf
+PS C:\> docker rmi vim-on-the-fly
 ```
