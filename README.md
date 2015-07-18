@@ -7,8 +7,9 @@ VIM on windows via Docker
 ## Objective
 - Run [VIM](https://github.com/vim/vim) on the fly on Windows
 
-## Prerequistuse
+## Prerequisites
 - [Docker for windows](http://docs.docker.com/windows/step_one/)
+- [Git Client](https://git-scm.com/)
 - Optional: alternative power shell [Cmder](https://github.com/bliker/cmder)
 
 ## Prepare
