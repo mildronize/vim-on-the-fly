@@ -11,35 +11,53 @@ VIM on windows via Docker
 - [Docker for windows](http://docs.docker.com/windows/step_one/)
 - Optional: alternative power shell [Cmder](https://github.com/bliker/cmder)
 
-> Note: Remember the ip of docker when docker started.
+## Prepare
+Run Docoker via `Boot2docker Start` shortcut on the desktop   ![](http://docs.docker.com/windows/images/icon-set.png)
+
+or by power shell
+
 ```
-IP address of docker VM:
-192.168.59.104
+PS C:\> cd 'C:\Program Files\Boot2Docker for Windows'
+PS C:\> sh start.sh
 ```
 
 ## Instruction
-1. Build
+1. Make sure the Docker is running via `Boot2docker status`. It has to return `running`. If not go back to [previous section](#prepare)
+
+2. Build
 
     ```
-    $ docker build -t vim-on-the-fly .
+    PS C:\> docker build -t vim-on-the-fly .
     ```
 
-2. Run the container
-Can't  run terminal docker directly via `docker run -it vim-on-the-fly` use belowing intead
+3. Run the container
+Can't  run terminal docker directly via `docker run -it vim-on-the-fly` use belowing instead
 
     ```
-    $ docker run -d -P --name run-vimotf vim-on-the-fly
-    $ docker port run-vimotf 22
+    PS C:\> docker run -d -P --name run-vimotf vim-on-the-fly
+    PS C:\> docker port run-vimotf 22
     0.0.0.0:32772
     ```
 
-3. Log in to it
-    To use `ssh` to `192.168.59.104` which is ip of docker VM and port `32772` which reached from No.2. The password is `vimotf` that is defined at `config/username`.
-    ```
-    $ ssh root@192.168.59.104 -p 32772
-    ```
+4. Log in to it
+    - **Method 1**: Through Docker VM
 
-4. Run vim, Cheer!
+        Port `32772` which reached from No.3.
+
+        ```
+        PS C:\> boot2docker ssh
+        $ ssh root@localhost -p 32772
+        ```
+    - **Method 2**: Through host
+        To use `ssh` to `192.168.59.104` which is ip of docker VM and port `32772` which reached from No.3. The password is `vimotf` that is defined at `config/username`.
+
+        ```
+        PS C:\> ssh root@192.168.59.104 -p 32772
+        ```
+
+        > Note: You can get the IP of docker VM by `boot2docker ip`
+
+5. Run vim, Cheer!
 
     ```
     vim
