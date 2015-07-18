@@ -34,7 +34,7 @@ Can't  run terminal docker directly via `docker run -it vim-on-the-fly` use belo
     ```
 
 3. Log in to it
-    use `ssh` to `192.168.59.104` which is ip of docker VM and port `32772` which reached from No.2
+    To use `ssh` to `192.168.59.104` which is ip of docker VM and port `32772` which reached from No.2. The password is `vimotf` that is defined at `config/username`.
     ```
     $ ssh root@192.168.59.104 -p 32772
     ```
