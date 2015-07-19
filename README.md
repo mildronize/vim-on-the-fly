@@ -70,3 +70,11 @@ PS C:\> docker stop run-vimotf
 PS C:\> docker rm run-vimotf
 PS C:\> docker rmi vim-on-the-fly
 ```
+
+## Troubleshooting
+If get the message something like that
+
+```
+Get http://127.0.0.1:2375/v1.19/images/json: dial tcp 127.0.0.1:2375: ConnectEx tcp: No connection could be made because the target machine actively refused it.. Are you trying to connect to a TLS-enabled daemon without TLS?
+```
+Fix it at <https://github.com/boot2docker/boot2docker/issues/952>
