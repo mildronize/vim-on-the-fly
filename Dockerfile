@@ -1,4 +1,8 @@
 FROM debian:testing
+
+ENV home /root
+ENV PASSWORD vimotf
+
 MAINTAINER Thada Wangthammang <mildronize@gmail.com>
 
 # Initialize config
@@ -9,8 +13,9 @@ COPY config/sources.list /etc/apt/sources.list
 RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 
-ADD config/username .
-RUN chpasswd < username && rm username
+# ADD config/username .
+# RUN chpasswd < username && rm username
+RUN echo "root:$PASSWORD" | chpasswd
 
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
@@ -23,6 +28,16 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
-# Install vim and other
+# Install git fabric
 
-RUN apt-get -y update && apt-get install -y vim
+RUN apt-get -y update && apt-get install -y git \
+  fabric \
+  sudo \
+  wget
+
+# Install vim and other via fabric
+WORKDIR ${home}
+RUN git clone https://github.com/mildronize/dotfiles.git
+WORKDIR ${home}/dotfiles
+RUN service ssh start && fab -H localhost set_vim_on_the_fly -p $PASSWORD
+WORKDIR ${home}/working

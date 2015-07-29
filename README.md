@@ -1,16 +1,17 @@
 # Vim On The Fly
 
-VIM on windows via Docker
+VIM anywhere
 
 > This project is under constructing. It's not ready to use
 
 ## Objective
-- Run [VIM](https://github.com/vim/vim) on the fly on Windows
+- Run [VIM](https://github.com/vim/vim) on the fly on Windows or linux or mac
 
 ## Prerequisites
 - [Docker for windows](http://docs.docker.com/windows/step_one/)
 - [Git Client](https://git-scm.com/)
 - Optional: alternative power shell [Cmder](https://github.com/bliker/cmder)
+- For best appearance using [putty](http://www.putty.org/) and [Solarized theme of Putty](https://github.com/altercation/solarized/tree/master/putty-colors-solarized)
 
 ## Prepare
 Run Docoker via `Boot2docker Start` shortcut on the desktop   ![](http://docs.docker.com/windows/images/icon-set.png)
@@ -32,31 +33,34 @@ PS C:\> sh start.sh
     ```
 
 3. Run the container
-Can't  run terminal docker directly via `docker run -it vim-on-the-fly` use belowing instead
-
-    ```
-    PS C:\> docker run -d -P --name run-vimotf vim-on-the-fly
-    PS C:\> docker port run-vimotf 22
-    0.0.0.0:32772
-    ```
-
-4. Log in to it
-    - **Method 1**: Through Docker VM
-
-        Port `32772` which reached from No.3.
+There are 2 choices
+    - Use access directly
 
         ```
-        PS C:\> boot2docker ssh
-        $ ssh root@localhost -p 32772
+        docker run -it vim-on-the-fly zsh
         ```
-    - **Method 2**: Through host
-        To use `ssh` to `192.168.59.104` which is ip of docker VM and port `32772` which reached from No.3. The password is `vimotf` that is defined at `config/username`.
+    - Run the container in the background ( Recommended on Windows )
+        1. Run the container in the background (use `docker ps` to see the process)
 
         ```
-        PS C:\> ssh root@192.168.59.104 -p 32772
+        PS C:\> docker run -d -p 2222:22 vim-on-the-fly
         ```
 
-        > Note: You can get the IP of docker VM by `boot2docker ip`
+        2. Log in to it
+            - **Method 1**: Through Docker VM
+
+                ```
+                PS C:\> boot2docker ssh
+                $ ssh root@localhost -p 2222
+                ```
+            - **Method 2**: Through host
+                To use `ssh` to `192.168.59.104` which is ip of docker VM and port `2222`  The password is `vimotf` that is defined at `config/username`.
+
+                ```
+                PS C:\> ssh root@192.168.59.104 -p 2222
+                ```
+
+                > Note: You can get the IP of docker VM by `boot2docker ip`
 
 5. Run vim, Cheer!
 
