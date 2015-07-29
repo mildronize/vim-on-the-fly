@@ -1,6 +1,6 @@
 FROM debian:testing
 
-ENV home /root
+ENV HOME /root
 ENV PASSWORD vimotf
 
 MAINTAINER Thada Wangthammang <mildronize@gmail.com>
@@ -36,8 +36,8 @@ RUN apt-get -y update && apt-get install -y git \
   wget
 
 # Install vim and other via fabric
-WORKDIR ${home}
+WORKDIR ${HOME}
 RUN git clone https://github.com/mildronize/dotfiles.git
-WORKDIR ${home}/dotfiles
+WORKDIR ${HOME}/dotfiles
 RUN service ssh start && fab -H localhost set_vim_on_the_fly -p $PASSWORD
-WORKDIR ${home}/working
+WORKDIR ${HOME}/working
