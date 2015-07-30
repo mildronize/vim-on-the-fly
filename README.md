@@ -2,8 +2,6 @@
 
 VIM anywhere
 
-> This project is under constructing. It's not ready to use
-
 ## Objective
 - Run [VIM](https://github.com/vim/vim) on the fly on Windows or linux or mac
 
