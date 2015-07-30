@@ -74,9 +74,17 @@ PS C:\> docker rmi vim-on-the-fly
 ```
 
 ## Troubleshooting
+### Problem 1:
 If get the message something like that
 
 ```
 Get http://127.0.0.1:2375/v1.19/images/json: dial tcp 127.0.0.1:2375: ConnectEx tcp: No connection could be made because the target machine actively refused it.. Are you trying to connect to a TLS-enabled daemon without TLS?
 ```
 Fix it at <https://github.com/boot2docker/boot2docker/issues/952>
+
+###  Problem 2:
+[Basic volume mount fails with windows docker client against boot2docker #12751](https://github.com/docker/docker/issues/12751)
+or [Problem with -v shared folders in 1.6 #12590](https://github.com/docker/docker/issues/12590)
+
+**Solution:**
+ [ahmetalpbalkan said](https://github.com/docker/docker/issues/12590#issuecomment-95370211)
